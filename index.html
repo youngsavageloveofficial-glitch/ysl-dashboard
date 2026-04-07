@@ -11,26 +11,28 @@
 <p style="text-align:center; color:#888;">Live Activity</p>
 
 <!-- STATS -->
-<div style="display:flex; justify-content:space-center; gap:20px; margin:30px 0; flex-wrap:wrap;">
+<div style="display:flex; justify-content:center; gap:20px; margin:30px 0; flex-wrap:wrap;">
+  
   <div style="background:#111; padding:20px; border-radius:12px; width:200px;">
     <p>Total Streams</p>
-    <h2 style="color:#00ff88;">1,543,085</h2>
+    <h2 id="streams" style="color:#00ff88;">1,543,085</h2>
   </div>
 
   <div style="background:#111; padding:20px; border-radius:12px; width:200px;">
     <p>Total Listeners</p>
-    <h2 style="color:#ff8800;">565,142</h2>
+    <h2 id="listeners" style="color:#ff8800;">565,142</h2>
   </div>
 
   <div style="background:#111; padding:20px; border-radius:12px; width:200px;">
     <p>Total Views</p>
-    <h2 style="color:#ff3333;">8,005,093</h2>
+    <h2 id="views" style="color:#ff3333;">8,005,093</h2>
   </div>
 
   <div style="background:#111; padding:20px; border-radius:12px; width:200px;">
     <p>Platforms</p>
     <h2 style="color:#00e5ff;">4</h2>
   </div>
+
 </div>
 
 <!-- GRAPH -->
@@ -39,12 +41,14 @@
 <script>
 const ctx = document.getElementById('chart');
 
-<script>
-const ctx = document.getElementById('chart');
-
 let youtube = 100;
 let spotify = 80;
 let tiktok = 150;
+
+// counters
+let streams = 1543085;
+let listeners = 565142;
+let views = 8005093;
 
 const chart = new Chart(ctx, {
   type: 'line',
@@ -70,14 +74,42 @@ const chart = new Chart(ctx, {
         tension: 0.4
       }
     ]
+  },
+  options: {
+    plugins: {
+      legend: {
+        labels: { color: 'white' }
+      }
+    },
+    scales: {
+      x: {
+        ticks: { color: '#777' },
+        grid: { color: '#111' }
+      },
+      y: {
+        ticks: { color: '#777' },
+        grid: { color: '#111' }
+      }
+    }
   }
 });
 
 function updateData() {
+  // fake growth
   youtube += Math.floor(Math.random() * 50);
   spotify += Math.floor(Math.random() * 20);
   tiktok += Math.floor(Math.random() * 60);
 
+  streams += Math.floor(Math.random() * 200);
+  listeners += Math.floor(Math.random() * 50);
+  views += Math.floor(Math.random() * 300);
+
+  // update counters
+  document.getElementById('streams').innerText = streams.toLocaleString();
+  document.getElementById('listeners').innerText = listeners.toLocaleString();
+  document.getElementById('views').innerText = views.toLocaleString();
+
+  // update chart
   chart.data.labels.push('');
   chart.data.datasets[0].data.push(youtube);
   chart.data.datasets[1].data.push(spotify);
@@ -93,3 +125,6 @@ function updateData() {
 
 setInterval(updateData, 2000);
 </script>
+
+</body>
+</html>
