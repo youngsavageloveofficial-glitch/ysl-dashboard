@@ -39,52 +39,57 @@
 <script>
 const ctx = document.getElementById('chart');
 
-new Chart(ctx, {
+<script>
+const ctx = document.getElementById('chart');
+
+let youtube = 100;
+let spotify = 80;
+let tiktok = 150;
+
+const chart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: ['1','2','3','4','5','6','7','8'],
+    labels: [],
     datasets: [
       {
         label: 'YouTube',
-        data: [100,200,150,300,250,400,350,500],
+        data: [],
         borderColor: '#ff0000',
         tension: 0.4
       },
       {
         label: 'Spotify',
-        data: [80,120,90,140,110,160,130,180],
+        data: [],
         borderColor: '#00ff88',
         tension: 0.4
       },
       {
         label: 'TikTok',
-        data: [150,300,200,400,350,450,420,480],
+        data: [],
         borderColor: '#00e5ff',
         tension: 0.4
       }
     ]
-  },
-  options: {
-    plugins: {
-      legend: {
-        labels: {
-          color: 'white'
-        }
-      }
-    },
-    scales: {
-      x: {
-        ticks: { color: '#777' },
-        grid: { color: '#111' }
-      },
-      y: {
-        ticks: { color: '#777' },
-        grid: { color: '#111' }
-      }
-    }
   }
 });
-</script>
 
-</body>
-</html>
+function updateData() {
+  youtube += Math.floor(Math.random() * 50);
+  spotify += Math.floor(Math.random() * 20);
+  tiktok += Math.floor(Math.random() * 60);
+
+  chart.data.labels.push('');
+  chart.data.datasets[0].data.push(youtube);
+  chart.data.datasets[1].data.push(spotify);
+  chart.data.datasets[2].data.push(tiktok);
+
+  if (chart.data.labels.length > 20) {
+    chart.data.labels.shift();
+    chart.data.datasets.forEach(d => d.data.shift());
+  }
+
+  chart.update();
+}
+
+setInterval(updateData, 2000);
+</script>
