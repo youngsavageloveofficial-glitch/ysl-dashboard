@@ -6,9 +6,7 @@
   <title>YSL Dashboard</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -362,7 +360,7 @@
         </div>
 
         <div class="card">
-          <div class="platform-growth down" id="tiktokGrowth">-0.8%</div>
+          <div class="platform-growth up" id="tiktokGrowth">+8.2%</div>
           <div class="card-label">TikTok</div>
           <div class="platform-main" id="tiktokViews">5,476,228 views</div>
           <div class="platform-sub">Short-form reach</div>
@@ -372,47 +370,47 @@
     </div>
 
     <div class="section-card">
-      <h2 class="section-title">Top Performing Content</h2>
+      <h2 class="section-title">3 Songs From My Album</h2>
       <div class="top-list">
         <div class="top-item">
           <div class="rank">1</div>
-          <div class="thumb">Beat Drop Clip</div>
+          <div class="thumb">Track 1 Cover</div>
           <div>
-            <div class="item-title">Beat Drop Clip</div>
-            <div class="item-platform blue">TikTok</div>
+            <div class="item-title">Victim</div>
+            <div class="item-platform orange">SoundCloud / Spotify</div>
           </div>
           <div class="item-stats">
-            <span id="top1Views">2,752,917 views</span>
-            <span id="top1Likes">511,256 likes</span>
-            <span id="top1Shares">153,376 shares</span>
+            <span id="song1Streams">483,789 streams</span>
+            <span id="song1Likes">88,777 likes</span>
+            <span id="song1Shares">12,369 shares</span>
           </div>
         </div>
 
         <div class="top-item">
           <div class="rank" style="background:linear-gradient(180deg,#d9d9d9,#8e8e8e);">2</div>
-          <div class="thumb">Summer Vibes</div>
+          <div class="thumb">Track 2 Cover</div>
           <div>
-            <div class="item-title">Summer Vibes</div>
-            <div class="item-platform red">YouTube</div>
+            <div class="item-title">Sweet Dreams</div>
+            <div class="item-platform red">YouTube / TikTok</div>
           </div>
           <div class="item-stats">
-            <span id="top2Views">1,240,317 views</span>
-            <span id="top2Likes">243,102 likes</span>
-            <span id="top2Shares">44,651 shares</span>
+            <span id="song2Views">1,240,317 views</span>
+            <span id="song2Likes">243,102 likes</span>
+            <span id="song2Shares">44,651 shares</span>
           </div>
         </div>
 
         <div class="top-item">
           <div class="rank" style="background:linear-gradient(180deg,#f0a14a,#8e4c0f);">3</div>
-          <div class="thumb">Midnight Dreams</div>
+          <div class="thumb">Track 3 Cover</div>
           <div>
-            <div class="item-title">Midnight Dreams</div>
-            <div class="item-platform green">Spotify</div>
+            <div class="item-title">BabyDarlene</div>
+            <div class="item-platform green">Spotify / TikTok</div>
           </div>
           <div class="item-stats">
-            <span id="top3Streams">483,789 streams</span>
-            <span id="top3Likes">88,777 likes</span>
-            <span id="top3Shares">12,369 shares</span>
+            <span id="song3Streams">752,917 streams</span>
+            <span id="song3Likes">151,256 likes</span>
+            <span id="song3Shares">23,376 shares</span>
           </div>
         </div>
       </div>
@@ -423,10 +421,10 @@
     const chartCanvas = document.getElementById('chart');
     const chartCtx = chartCanvas.getContext('2d');
 
-    let youtube = 210;
-    let spotify = 120;
-    let tiktok = 240;
-    let soundcloud = 22;
+    let youtube = 230;
+    let spotify = 125;
+    let tiktok = 265;
+    let soundcloud = 24;
 
     let streams = 1543085;
     let listeners = 565142;
@@ -441,17 +439,17 @@
     let youtubeViews = 2780319;
     let tiktokViews = 5476228;
 
-    let top1Views = 2752917;
-    let top1Likes = 511256;
-    let top1Shares = 153376;
+    let song1Streams = 483789;
+    let song1Likes = 88777;
+    let song1Shares = 12369;
 
-    let top2Views = 1240317;
-    let top2Likes = 243102;
-    let top2Shares = 44651;
+    let song2Views = 1240317;
+    let song2Likes = 243102;
+    let song2Shares = 44651;
 
-    let top3Streams = 483789;
-    let top3Likes = 88777;
-    let top3Shares = 12369;
+    let song3Streams = 752917;
+    let song3Likes = 151256;
+    let song3Shares = 23376;
 
     const glowPlugin = {
       id: 'glowLine',
@@ -477,7 +475,6 @@
             label: 'Spotify',
             data: [],
             borderColor: '#19e56f',
-            backgroundColor: 'rgba(25,229,111,0.08)',
             tension: 0.42,
             pointRadius: 2,
             pointHoverRadius: 4,
@@ -487,7 +484,6 @@
             label: 'SoundCloud',
             data: [],
             borderColor: '#ff8a1f',
-            backgroundColor: 'rgba(255,138,31,0.08)',
             tension: 0.42,
             pointRadius: 2,
             pointHoverRadius: 4,
@@ -497,7 +493,6 @@
             label: 'YouTube',
             data: [],
             borderColor: '#ff3838',
-            backgroundColor: 'rgba(255,56,56,0.08)',
             tension: 0.42,
             pointRadius: 2,
             pointHoverRadius: 4,
@@ -507,7 +502,6 @@
             label: 'TikTok',
             data: [],
             borderColor: '#15e7ff',
-            backgroundColor: 'rgba(21,231,255,0.08)',
             tension: 0.42,
             pointRadius: 2,
             pointHoverRadius: 4,
@@ -581,29 +575,20 @@
       return Math.floor(Math.random() * variance) + base;
     }
 
-    function fluctuatePercent(base, variance = 0.8, allowNegative = false) {
-      let val = base + (Math.random() * variance);
-      if (allowNegative && Math.random() > 0.75) {
-        val = -(Math.random() * variance);
-      }
-      return val;
+    function fluctuatePercent(base, variance = 0.8) {
+      return (base + (Math.random() * variance)).toFixed(1);
     }
 
     function updateGrowthLabels() {
-      const s = fluctuatePercent(6.0).toFixed(1);
-      const sc = fluctuatePercent(5.8).toFixed(1);
-      const y = fluctuatePercent(3.5).toFixed(1);
-      const t = fluctuatePercent(0.2, 1.2, true).toFixed(1);
+      const s = fluctuatePercent(6.0);
+      const sc = fluctuatePercent(5.2);
+      const y = fluctuatePercent(4.1);
+      const t = fluctuatePercent(7.6);
 
-      setText('spotifyGrowth', `${s >= 0 ? '+' : ''}${s}%`);
-      setText('soundcloudGrowth', `${sc >= 0 ? '+' : ''}${sc}%`);
-      setText('youtubeGrowth', `${y >= 0 ? '+' : ''}${y}%`);
-      setText('tiktokGrowth', `${t >= 0 ? '+' : ''}${t}%`);
-
-      document.getElementById('spotifyGrowth').className = `platform-growth ${s >= 0 ? 'up' : 'down'}`;
-      document.getElementById('soundcloudGrowth').className = `platform-growth ${sc >= 0 ? 'up' : 'down'}`;
-      document.getElementById('youtubeGrowth').className = `platform-growth ${y >= 0 ? 'up' : 'down'}`;
-      document.getElementById('tiktokGrowth').className = `platform-growth ${t >= 0 ? 'up' : 'down'}`;
+      setText('spotifyGrowth', `+${s}%`);
+      setText('soundcloudGrowth', `+${sc}%`);
+      setText('youtubeGrowth', `+${y}%`);
+      setText('tiktokGrowth', `+${t}%`);
     }
 
     function seedChart() {
@@ -623,17 +608,10 @@
     }
 
     function updateDashboard() {
-      spotify += Math.floor(Math.random() * 14) - 3;
-      if (spotify < 80) spotify = 80;
-
-      soundcloud += Math.floor(Math.random() * 8) - 2;
-      if (soundcloud < 10) soundcloud = 10;
-
-      youtube += Math.floor(Math.random() * 28) - 4;
-      if (youtube < 120) youtube = 120;
-
-      tiktok += Math.floor(Math.random() * 34) - 6;
-      if (tiktok < 150) tiktok = 150;
+      spotify += Math.floor(Math.random() * 10) + 1;
+      soundcloud += Math.floor(Math.random() * 4);
+      youtube += Math.floor(Math.random() * 16) + 4;
+      tiktok += Math.floor(Math.random() * 18) + 6;
 
       streams += randomGrowth(60, 180);
       listeners += randomGrowth(20, 35);
@@ -648,17 +626,17 @@
       youtubeViews += randomGrowth(30, 90);
       tiktokViews += randomGrowth(35, 120);
 
-      top1Views += randomGrowth(20, 70);
-      top1Likes += randomGrowth(5, 20);
-      top1Shares += randomGrowth(2, 8);
+      song1Streams += randomGrowth(8, 30);
+      song1Likes += randomGrowth(2, 8);
+      song1Shares += randomGrowth(1, 4);
 
-      top2Views += randomGrowth(10, 40);
-      top2Likes += randomGrowth(3, 12);
-      top2Shares += randomGrowth(1, 5);
+      song2Views += randomGrowth(10, 40);
+      song2Likes += randomGrowth(3, 12);
+      song2Shares += randomGrowth(1, 5);
 
-      top3Streams += randomGrowth(8, 30);
-      top3Likes += randomGrowth(2, 8);
-      top3Shares += randomGrowth(1, 4);
+      song3Streams += randomGrowth(12, 36);
+      song3Likes += randomGrowth(4, 10);
+      song3Shares += randomGrowth(2, 5);
 
       setText('streams', formatNumber(streams));
       setText('listeners', formatNumber(listeners));
@@ -673,17 +651,17 @@
       setText('youtubeViews', `${formatNumber(youtubeViews)} views`);
       setText('tiktokViews', `${formatNumber(tiktokViews)} views`);
 
-      setText('top1Views', `${formatNumber(top1Views)} views`);
-      setText('top1Likes', `${formatNumber(top1Likes)} likes`);
-      setText('top1Shares', `${formatNumber(top1Shares)} shares`);
+      setText('song1Streams', `${formatNumber(song1Streams)} streams`);
+      setText('song1Likes', `${formatNumber(song1Likes)} likes`);
+      setText('song1Shares', `${formatNumber(song1Shares)} shares`);
 
-      setText('top2Views', `${formatNumber(top2Views)} views`);
-      setText('top2Likes', `${formatNumber(top2Likes)} likes`);
-      setText('top2Shares', `${formatNumber(top2Shares)} shares`);
+      setText('song2Views', `${formatNumber(song2Views)} views`);
+      setText('song2Likes', `${formatNumber(song2Likes)} likes`);
+      setText('song2Shares', `${formatNumber(song2Shares)} shares`);
 
-      setText('top3Streams', `${formatNumber(top3Streams)} streams`);
-      setText('top3Likes', `${formatNumber(top3Likes)} likes`);
-      setText('top3Shares', `${formatNumber(top3Shares)} shares`);
+      setText('song3Streams', `${formatNumber(song3Streams)} streams`);
+      setText('song3Likes', `${formatNumber(song3Likes)} likes`);
+      setText('song3Shares', `${formatNumber(song3Shares)} shares`);
 
       liveChart.data.labels.push('30s');
       liveChart.data.datasets[0].data.push(spotify);
